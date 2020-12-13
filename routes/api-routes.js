@@ -18,7 +18,10 @@ router.post("/notes", (req, res) => {
     console.log(oldNotes);
     console.log(newNote);
     oldNotes.push(newNote);
-    console.log(oldNotes);
+
+    fs.writeFile("./db/db.json", JSON.stringify(oldNotes), (err) => {
+      if (err) throw err;
+    });
     return res.json(newNote);
   });
 });
