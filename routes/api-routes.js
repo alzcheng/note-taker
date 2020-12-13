@@ -22,6 +22,7 @@ router.post("/notes", (req, res) => {
     fs.writeFile("./db/db.json", JSON.stringify(oldNotes), (err) => {
       if (err) throw err;
     });
+
     return res.json(newNote);
   });
 });
